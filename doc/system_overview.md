@@ -36,4 +36,4 @@ Sends appropriate motor commands to the joystick manipulator to move the joystic
 
 The System Manager is responsible for taking action based on input from the Head Tilt Detector and Eye Blink and Jaw Clench Detector sub-systems. When appropriate, the System Manager will send the desired joystick location to the Joystick Manipulator Controller so that the wheelchair moves.
 
-The System Manager will also contain a user interface to provide information on the status of the system. This interface will also enable manual directional control of the wheelchair and options to *engage* or *disengage* the head-tilt control mechanism.
+The System Manager will contain a user interface to provide information on the status of the system. This interface will also enable manual directional control of the wheelchair and options to *engage* or *disengage* the head-tilt control mechanism.
