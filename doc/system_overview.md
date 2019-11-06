@@ -10,7 +10,7 @@ We have a little time to develop this Maker Faire exhibit. Sub-systems are likel
 
 ### Diagram
 
-![system-diagram](diagrams/system_overview.pdf)
+![system-diagram](diagrams/system_overview.png)
 
 Any sub-system within the "NXT System" box is a software or hardware component created for the Maker Faire exhibit.
 
