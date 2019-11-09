@@ -14,7 +14,7 @@ class AccelerometerStreamObserver(ABC):
     """
 
     @abstractmethod
-    def update(self, x: float, y: float, z: float, timestamp: datetime.time) -> None:
+    def update(self, x: float, y: float, z: float, timestamp: time) -> None:
         """
         Update the observer with the new accelerometer XYZ values and a timestamp 
         representing the time the accelerometer data was received.
