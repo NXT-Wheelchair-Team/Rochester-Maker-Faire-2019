@@ -8,17 +8,19 @@ from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navigatio
 import matplotlib.pyplot as plt
 from collections import deque
 from datetime import time
+from typing import Dict, Deque, Union
 
-from model.AccelerometerStreamObserver import AccelerometerStreamObserver
+from src.model.AccelerometerStreamObserver import AccelerometerStreamObserver
+from src.model.AccelerometerStreamSubject import AccelerometerStreamSubject
 
 
-class AccelerometerStreamView(QWidget, AccelerometerStreamObserver):
+class AccelerometerStreamView(QWidget):
     """
     View for displaying accelerometer data.
     """
 
-    def __init__(self, parent=None, flags=Qt.WindowFlags()):
-        super().__init__(parent=parent, flags=flags)
+    def __init__(self, accel_stream: AccelerometerStreamSubject, parent=None):
+        super().__init__(parent=parent)
 
         # a figure instance to plot on
         self.figure = plt.figure()
@@ -37,11 +39,30 @@ class AccelerometerStreamView(QWidget, AccelerometerStreamObserver):
         layout.addWidget(self.canvas)
         self.setLayout(layout)
 
-        self.data_queue = deque(maxlen=100)
+        self.data: Dict[str, Deque[Union[float, str]]] = {
+            "x": deque(maxlen=100),
+            "y": deque(maxlen=100),
+            "z": deque(maxlen=100),
+            "time": deque(maxlen=100),
+        }
+
+        self.accel_stream = accel_stream
+        self.accel_stream.attach(self)
 
     def update(self, x: float, y: float, z: float, timestamp: time) -> None:
-        self.data_queue.append(tuple(tuple(x, y, z), time))
+        self.data["x"].append(x)
+        self.data["y"].append(y)
+        self.data["z"].append(z)
+        self.data["time"].append(
+            "{}:{}".format(timestamp.second, timestamp.microsecond)
+        )
         self.draw_graph()
 
     def draw_graph(self):
-        pass
+        self.figure.clear()
+        subplot = self.figure.add_subplot(111)
+        subplot.plot("time", "x", data=self.data)
+        subplot.plot("time", "y", data=self.data)
+        subplot.plot("time", "z", data=self.data)
+        subplot.axes.get_xaxis().set_visible(False)
+        self.canvas.draw()

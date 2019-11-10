@@ -8,7 +8,7 @@ import logging
 import datetime
 import json
 
-from model.AccelerometerStreamSubject import AccelerometerStreamSubject
+from src.model.AccelerometerStreamSubject import AccelerometerStreamSubject
 
 
 class AccelerometerStreamReader(AccelerometerStreamSubject):
@@ -39,12 +39,12 @@ class AccelerometerStreamReader(AccelerometerStreamSubject):
 
                 accel_dict = json.loads(accel_data)
                 x = accel_dict["data"][0]
-                y = accel_data["data"][1]
-                z = accel_data["data"][2]
+                y = accel_dict["data"][1]
+                z = accel_dict["data"][2]
 
                 self.notify(x, y, z, timestamp)
         except Exception as e:
-            logging.FATAL(
+            logging.error(
                 "Accelerometer stream reader thread raised an excpetion: {}".format(e)
             )
             raise e

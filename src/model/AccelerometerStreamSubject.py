@@ -6,7 +6,7 @@ from abc import ABC
 from typing import Set
 from datetime import time
 
-from model.AccelerometerStreamObserver import AccelerometerStreamObserver
+from src.model.AccelerometerStreamObserver import AccelerometerStreamObserver
 
 
 class AccelerometerStreamSubject(ABC):
@@ -17,7 +17,7 @@ class AccelerometerStreamSubject(ABC):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.observers: Set[AccelerometerStreamObserver] = []
+        self.observers: Set[AccelerometerStreamObserver] = set()
 
     def attach(self, observer: AccelerometerStreamObserver) -> None:
         self.observers.add(observer)
