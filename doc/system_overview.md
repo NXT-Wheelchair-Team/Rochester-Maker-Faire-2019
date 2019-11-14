@@ -16,7 +16,7 @@ Any sub-system within the "NXT System" box is a software or hardware component c
 
 ### Design
 
-The system as presented in the diagram separates major system functionality into separate subsystems that communicate through language-agnostic networking sockets. This allows for high modularity so that an entirely new implementation of a sub-system can be put into service without requiring a change in any other part of the system.
+The system as presented in the diagram separates major system functionality into separate subsystems that communicate through language-agnostic networking sockets. This allows for high modularity so that an entirely new implementation of a sub-system can be put into service without requiring a change in any other part of the system. Specifically, the communication between sub-systems will be supported by the ZeroMQ messaging library. This provides a lightweight, socket-like API that people easily understand, while ensuring our messages are atomic.
 
 ### Sub-system Responsibilities
 
