@@ -45,6 +45,6 @@ class AccelerometerStreamReader(AccelerometerStreamSubject):
                 self.notify(x, y, z, timestamp)
         except Exception as e:
             logging.error(
-                "Accelerometer stream reader thread raised an excpetion: {}".format(e)
+                "Accelerometer stream reader thread raised an exception: {}".format(e)
             )
             raise e
