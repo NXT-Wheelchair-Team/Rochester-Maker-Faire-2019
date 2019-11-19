@@ -11,7 +11,7 @@ from typing import Set
 from src.model.HeadTiltObserver import HeadTiltObserver
 
 
-class AccelerometerStreamSubject(ABC):
+class HeadTiltSubject(ABC):
     """
     Subject in the observer pattern for head tilt data.
     Contains functionality to keep track of observers and update() them.
