@@ -58,6 +58,6 @@ class HeadTiltReceiver(HeadTiltSubject):
             logging.warning("Roll value received was greater than 1.0")
             roll = 1.0
         elif roll < -1.0:
-            logging.warning("Pitch value received was less than -1.0")
+            logging.warning("Roll value received was less than -1.0")
             roll = 1.0
         return pitch, roll
