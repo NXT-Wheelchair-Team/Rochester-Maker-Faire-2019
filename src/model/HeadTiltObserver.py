@@ -3,7 +3,7 @@ Contains the HeadTiltObserver interface.
 Interfaces (abstract classes with no implemented functions) are not necessary in Python 
 but this is here for code documentation purposes along with optimal type hinting.
 
-@author Adam Del Rosso
+@author Adam Del Rosso  avd5772@rit.edu
 @date 11/19/2019
 """
 
