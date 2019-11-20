@@ -19,5 +19,8 @@ class HeadTiltObserver(ABC):
     def update_head_tilt(self, pitch: float, roll: float) -> None:
         """
         Update the observer with the new head tilt and roll values.
+
+        :param pitch: head tilt in the front-back direction from -1.0 to 1.0 (-100% to 100%)
+        :param roll: head tilt in the side-to-side -1.0 to 1.0 (-100% to 100%)
         """
         pass

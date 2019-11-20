@@ -20,7 +20,7 @@ class HeadTiltReceiver(HeadTiltSubject):
         self.ip = ip
         self.port = port
         self.socket = zmq_context.socket(zmq.PAIR)
-        self.socket.bind("tcp://{}:{}".format(ip, port))
+        self.socket.bind("tcp://{}:{}".format(ip, port))  # this class is the server
         self.thread = threading.Thread(target=self._threading_main_loop,
                                        daemon=True  # thread dies with main process
                                        )
