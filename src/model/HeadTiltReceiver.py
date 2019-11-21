@@ -15,7 +15,7 @@ class HeadTiltReceiver(HeadTiltSubject):
     Contains functionality to receive ZMQ messages from the head tilt detection subsystem.
     """
 
-    def __init__(self, ip: str, port: int, zmq_context: zmq.context.Context, *args, **kwargs):
+    def __init__(self, ip: str, port: int, zmq_context: zmq.Context, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.ip = ip
         self.port = port

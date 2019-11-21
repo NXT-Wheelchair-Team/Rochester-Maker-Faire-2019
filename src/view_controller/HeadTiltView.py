@@ -6,16 +6,17 @@ Contains the HeadTiltView Qt widget.
 """
 from PyQt5.QtWidgets import QWidget
 
+from src.model.HeadTiltObserver import HeadTiltObserver
 from src.model.HeadTiltSubject import HeadTiltSubject
 
 
-class HeadTiltView(QWidget):
+class HeadTiltView(HeadTiltObserver):
     """
     View for displaying head tilt data.
     """
 
-    def __init__(self, head_tilt_subject: HeadTiltSubject, parent=None):
-        super().__init__(parent=parent)
+    def __init__(self, head_tilt_subject: HeadTiltSubject):
+        super().__init__()
         self.subject = head_tilt_subject
         self.subject.attach(self)
 
