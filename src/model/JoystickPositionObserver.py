@@ -13,9 +13,9 @@ class JoystickPositionObserver(ABC):
     """
 
     @abstractmethod
-    def update_position(self, rho: int, phi: float) -> None:
+    def update_position(self, magnitude: float, angle: int) -> None:
         """
-        :param rho: Angular component of the polar coordinate (0-359 - East is 0)
-        :param phi: Scalar component of the polar coordinate (0.0-1.0 - 0%-100% of max joystick position)
+        :param angle: Angular component of the polar coordinate (0-359 - East is 0)
+        :param magnitude: Scalar component of the polar coordinate (0.0-1.0 - 0%-100% of max joystick position)
         """
         pass

@@ -27,15 +27,16 @@ class HeadTiltJoystickController(JoystickPositionSubject, HeadTiltObserver):
         self.head_tilt_subject.attach(self)
 
     def update_head_tilt(self, pitch: float, roll: float) -> None:
-        rho, phi = self.cart2pol(roll, pitch)
-        if rho > 1.0:  # max rho is 100%
-            rho = 1.0
-        phi = math.degrees(phi)
-        if phi < 0:  # translate negative degrees in quadrants 3 & 4 into positive
-            phi = 360 + phi
+        magnitude, angle = self.cart2pol(roll, pitch)
+        if magnitude > 1.0:  # max rho is 100%
+            magnitude = 1.0
+        angle = math.degrees(angle)
+        if angle < 0:  # translate negative degrees in quadrants 3 & 4 into positive
+            angle = 360 + angle
+        angle = int(angle)
         logging.debug(
-            "HeadTiltJoystickController: Got pitch: {}, roll: {}. Rho: {}, Phi: {}".format(pitch, roll, rho, phi))
-        self.notify_position(rho, phi)
+            "HeadTiltJoystickController: Got pitch: {}, roll: {}. Magnitude: {}, Angle: {}".format(pitch, roll, magnitude, angle))
+        self.notify_position(magnitude, angle)
 
     @staticmethod
     def cart2pol(x, y):

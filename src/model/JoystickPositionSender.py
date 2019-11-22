@@ -25,6 +25,7 @@ class JoystickPositionSender(JoystickPositionObserver):
         self.socket = zmq_context.socket(zmq.PAIR)
         self.socket.bind("tcp://{}:{}".format(ip, port))  # this class is the server
 
-    def update_position(self, rho: int, phi: float) -> None:
-        self.socket.send_json({"Angle": rho, "Magnitude": phi})
-        logging.info("Sent joystick position: {}".format({"Angle": rho, "Magnitude": phi}))
+    def update_position(self, magnitude: float, angle: int) -> None:
+        msg = {"Angle": angle, "Magnitude": magnitude}
+        self.socket.send_json(msg)
+        logging.info("Sent joystick position: {}".format(msg))

@@ -32,7 +32,8 @@ class HeadTiltReceiver(HeadTiltSubject):
             while True:
                 msg: Dict = self.socket.recv_json()
                 pitch = float(msg["tilt"])
-                roll = float(msg["tilt"])
+                roll = float(msg["roll"])
+                logging.debug("HeadTiltReceiver got: {}".format(msg))
                 pitch, roll = self._check_bounds(pitch, roll)
                 self.notify(pitch, roll)
         except Exception as e:

@@ -26,6 +26,6 @@ class JoystickPositionSubject(ABC):
     def detach(self, observer: JoystickPositionObserver) -> None:
         self.observers.remove(observer)
 
-    def notify_position(self, rho: int, phi: float) -> None:
+    def notify_position(self, magnitude: float, angle: int) -> None:
         for observer in self.observers:
-            observer.update_position(rho, phi)
+            observer.update_position(magnitude, angle)
