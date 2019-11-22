@@ -26,5 +26,5 @@ class JoystickPositionSender(JoystickPositionObserver):
         self.socket.bind("tcp://{}:{}".format(ip, port))  # this class is the server
 
     def update_position(self, rho: int, phi: float) -> None:
-        logging.info("Sending joystick position: {}".format({"Angle": rho, "Magnitude": phi}))
         self.socket.send_json({"Angle": rho, "Magnitude": phi})
+        logging.info("Sent joystick position: {}".format({"Angle": rho, "Magnitude": phi}))
