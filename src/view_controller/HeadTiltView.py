@@ -27,4 +27,4 @@ class HeadTiltView(HeadTiltObserver):
         # TODO create an actual GUI widget
         print("Head tilt view new data:")
         print("\tPitch: {}%".format(pitch * 100))
-        print("\tRoll: {}%").format(roll * 100)
+        print("\tRoll: {}%".format(roll * 100))
