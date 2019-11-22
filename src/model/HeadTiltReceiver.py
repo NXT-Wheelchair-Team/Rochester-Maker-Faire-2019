@@ -24,6 +24,7 @@ class HeadTiltReceiver(HeadTiltSubject):
         self.thread = threading.Thread(target=self._threading_main_loop,
                                        daemon=True  # thread dies with main process
                                        )
+        self.thread.start()
 
     def _threading_main_loop(self):
         logging.info("Head tilt reader thread started")
