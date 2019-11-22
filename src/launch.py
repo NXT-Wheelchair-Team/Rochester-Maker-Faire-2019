@@ -1,3 +1,4 @@
+import logging
 from typing import List
 
 import PyQt5
@@ -19,6 +20,8 @@ from src.model.MovementState import MovementState
 from src.view_controller.HeadTiltView import HeadTiltView
 from src.view_controller.KeyboardMovementController import KeyboardMovementController
 from src.view_controller.MovementStateView import MovementStateView
+
+logging.basicConfig(level="DEBUG")
 
 MANIPULATOR_CTRL_PORT = 9784
 HEAD_TILT_PORT = 5557
@@ -43,7 +46,9 @@ HeadTiltView(head_tilt_receiver)
 
 app = PyQt5.QtWidgets.QApplication(sys.argv)
 
-gui = src.view_controller.AccelerometerStreamView.AccelerometerStreamView(reader)
-gui.show()
+head_tilt_receiver.thread.join()
+
+# gui = src.view_controller.AccelerometerStreamView.AccelerometerStreamView(reader)
+# gui.show()
 
 sys.exit(app.exec_())
