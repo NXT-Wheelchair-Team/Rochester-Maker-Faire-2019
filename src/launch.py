@@ -36,7 +36,7 @@ movement_state = MovementState(control_events)  # should only be one movement st
 
 zmq_context = zmq.Context()
 head_tilt_receiver = HeadTiltReceiver("127.0.0.1", HEAD_TILT_PORT, zmq_context)
-joystick_pos_controller = HeadTiltJoystickController(head_tilt_receiver)
+joystick_pos_controller = HeadTiltJoystickController(head_tilt_receiver, movement_state)
 joystick_pos_sender = JoystickPositionSender(joystick_pos_controller, "127.0.0.1", MANIPULATOR_CTRL_PORT, zmq_context)
 
 # Initialize view components
